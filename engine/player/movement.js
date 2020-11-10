@@ -18,8 +18,25 @@ document.onkeyup = function(e) {
 }
 
 function move() {
-    if (TOP) player.y -= player.speed;
-    if (DOWN) player.y += player.speed;
-    if (LEFT) player.x -= player.speed;
-    if (RIGHT) player.x += player.speed;
+    player.animationState = "idle";
+
+    if (LEFT) {
+        player.x -= player.speed;
+        player.animationState = "walk_left";
+    }
+
+    if (RIGHT) {
+        player.x += player.speed;
+        player.animationState = "walk_right";
+    }
+
+    if (TOP) {
+        player.y -= player.speed;
+        player.animationState = "walk_top";
+    }
+
+    if (DOWN) {
+        player.y += player.speed;
+        player.animationState = "walk_down";
+    }
 }

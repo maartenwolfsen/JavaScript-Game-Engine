@@ -1,9 +1,22 @@
+let spriteSettings = {
+    "sprites_per_animation": 4
+}
+
 let player = {
     x: canvas.width / 2,
     y: canvas.height - 100,
     speed: 1,
     width: 64,
-    height: 64
+    height: 64,
+    animationState: "idle"              // idle, walk_direction
+};
+
+const spriteSheetMapping = {
+    "idle": 0,
+    "walk_down": 0,
+    "walk_right": player.width * spriteSettings.sprites_per_animation,
+    "walk_top": player.width * (2 * spriteSettings.sprites_per_animation),
+    "walk_left": player.width * (3 * spriteSettings.sprites_per_animation)
 };
 
 const animationCycle = [0, 1, 2, 3];
@@ -22,7 +35,7 @@ let animationCounter = 0;
 function drawFrame(frameX, frameY, canvasX, canvasY) {
     game.drawImage(
         playerSpriteSheet,
-        frameX * player.width,
+        spriteSheetMapping[player.animationState] + frameX * player.width,
         frameY * player.height,
         player.width,
         player.height,
@@ -39,6 +52,7 @@ function drawPlayer() {
 
 const fc = new FpsCtrl(fps, function() {
     animationCounter++;
+    
     if (animationCounter > animationFps) {
         cycleIndex = cycleIndex < animationCycle.length ? cycleIndex + 1 : 1;
         animationCounter = 0;
