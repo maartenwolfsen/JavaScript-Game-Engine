@@ -1,3 +1,11 @@
+/**
+ * FPS Control
+ *
+ * @source https://stackoverflow.com/a/19773537
+ * @param fps
+ * @param callback
+ * @constructor
+ */
 function FpsCtrl(fps, callback) {
     let delay = 1000 / fps,
         time = null,
