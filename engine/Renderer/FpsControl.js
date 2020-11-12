@@ -6,7 +6,7 @@
  * @param callback
  * @constructor
  */
-function FpsCtrl(fps, callback) {
+export function FpsCtrl(fps, callback) {
     let delay = 1000 / fps,
         time = null,
         frame = -1,

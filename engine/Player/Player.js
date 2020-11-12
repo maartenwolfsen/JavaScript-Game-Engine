@@ -1,3 +1,5 @@
+import {FpsCtrl} from "/engine/Renderer/FpsControl.js";
+
 let spriteSettings = {
     "sprites_per_animation": config.game.sprite_sheets.player_sprite_per_animation
 }
