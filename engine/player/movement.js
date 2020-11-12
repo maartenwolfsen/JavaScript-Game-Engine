@@ -1,25 +1,27 @@
+import {getPlayer} from "/engine/player/player.js";
+
+let player = getPlayer();
+
 let TOP = false;
-let DOWN = false;
+let BOTTOM = false;
 let LEFT = false;
 let RIGHT = false;
 
 document.onkeydown = function(e) {
-    if (e.key === "w") TOP = true;
-    if (e.key === "s") DOWN = true;
-    if (e.key === "a") LEFT = true;
-    if (e.key === "d") RIGHT = true;
+    if (e.key === config.game.keys.top) TOP = true;
+    if (e.key === config.game.keys.bottom) BOTTOM = true;
+    if (e.key === config.game.keys.left) LEFT = true;
+    if (e.key === config.game.keys.right) RIGHT = true;
 }
 
 document.onkeyup = function(e) {
-    if (e.key === "w") TOP = false;
-    if (e.key === "s") DOWN = false;
-    if (e.key === "a") LEFT = false;
-    if (e.key === "d") RIGHT = false;
+    if (e.key === config.game.keys.top) TOP = false;
+    if (e.key === config.game.keys.bottom) BOTTOM = false;
+    if (e.key === config.game.keys.left) LEFT = false;
+    if (e.key === config.game.keys.right) RIGHT = false;
 }
 
-function move() {
-    player.animationState = "idle";
-
+export function move() {
     if (LEFT) {
         player.x -= player.speed;
         player.animationState = "walk_left";
@@ -35,7 +37,7 @@ function move() {
         player.animationState = "walk_top";
     }
 
-    if (DOWN) {
+    if (BOTTOM) {
         player.y += player.speed;
         player.animationState = "walk_down";
     }

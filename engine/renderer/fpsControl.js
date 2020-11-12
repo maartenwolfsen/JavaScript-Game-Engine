@@ -54,4 +54,3 @@ function FpsCtrl(fps, callback) {
         }
     };
 }
-
