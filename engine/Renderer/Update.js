@@ -9,7 +9,7 @@ setInterval(update, 1);
 
 function update() {
     clearCanvas();
-    renderMap();
+    renderMap("test");
     playerMovement.registerKeys();
     playerMovement.movePlayer(player);
     player.drawPlayer();
