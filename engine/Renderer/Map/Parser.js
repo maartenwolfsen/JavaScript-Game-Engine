@@ -1,5 +1,6 @@
 import {File} from "/engine/Core/File.js";
 
+// TODO: Use actual map
 export function MapParser() {
     let mapPath = "/assets/map";
 
