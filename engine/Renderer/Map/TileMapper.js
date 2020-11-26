@@ -1,6 +1,11 @@
 function TileMapper() {
+    this.map = {
+        "x": "grass",
+        "c": "rock",
+        "e": "computer"
+    }
 
     this.translate = function(tile) {
-        return map[tile];
+        return this.map[tile];
     }
 }

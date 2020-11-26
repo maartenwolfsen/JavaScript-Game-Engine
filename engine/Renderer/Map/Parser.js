@@ -9,11 +9,19 @@ export function MapParser() {
 
         mapPath += "/" + map + ".map";
 
-        return "xxxxxcxxxxx\n" +
-            "xxcxxxxxxxx\n" +
-            "xxxxxxxxcxx\n" +
-            "xxxxxxcxxxx\n" +
-            "xxxxxxxxxxc\n" +
-            "xxxxcxxxxxx";
+        return "xxxxxcxxeexxxxxxxcxxeexx\n" +
+            "xxcxxxxxxxxxxcxxxxxxxx\n" +
+            "xxxexxxxcxxxxxexxxxcxx\n" +
+            "xxxxxxcxxxxxxxxxxcxxxx\n" +
+            "xxxxxxxexxcxxxxxxxexxc\n" +
+            "xxxxcxxxxxxxxxxcxxxxxx" +
+            "xxxxxcxxeexxxxxxxcxxeexx\n" +
+            "xxcxxxxxxxxxxcxxxxxxxx\n" +
+            "xxxexxxxcxxxxxexxxxcxx\n" +
+            "xxxxxxcxxxxxxxxxxcxxxx\n" +
+            "xxxxxxxexxcxxxxxxxexxc\n" +
+            "xxxxxxcxxxxxxxxxxcxxxx\n" +
+            "xxxxxxxexxcxxxxxxxexxc\n" +
+            "xxxxcxxxxxxxxxxcxxxxxx";
     }
 }

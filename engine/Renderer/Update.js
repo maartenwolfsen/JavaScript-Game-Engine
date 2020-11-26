@@ -6,10 +6,10 @@ const playerMovement = new PlayerMovement();
 let player = new Player();
 
 setInterval(update, 1);
-renderMap();
 
 function update() {
     clearCanvas();
+    renderMap();
     playerMovement.registerKeys();
     playerMovement.movePlayer(player);
     player.drawPlayer();
