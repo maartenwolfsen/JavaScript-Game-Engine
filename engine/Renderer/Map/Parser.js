@@ -1,26 +1,18 @@
+import {File} from "/engine/Core/File.js";
+
 export function MapParser() {
-    let mapPath = "/assets/Map";
+    let mapPath = "/assets/map";
 
     this.parse = function(map) {
-        if (map === mapPath + "/" + map + ".Map") return null;
+        if (map === mapPath + "/" + map + ".map") return null;
 
-        mapPath += "/" + map + ".Map";
+        mapPath += "/" + map + ".map";
 
-        return this.readFile().then();
-    }
-
-    this.readFile = async function() {
-        const response = await fetch(mapPath, {
-            method: 'GET',
-            mode: 'cors',
-            credentials: 'same-origin',
-            headers: {
-                'Content-Type': 'application/text'
-            },
-            redirect: 'follow',
-            referrerPolicy: 'no-referrer'
-        });
-
-        return response.text();
+        return "xxxxxcxxxxx\n" +
+            "xxcxxxxxxxx\n" +
+            "xxxxxxxxcxx\n" +
+            "xxxxxxcxxxx\n" +
+            "xxxxxxxxxxc\n" +
+            "xxxxcxxxxxx";
     }
 }
