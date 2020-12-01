@@ -21,37 +21,43 @@ export function Collision() {
         }
 
         const collisionObjects = map.objectMapper.objectMap.collisionObjects;
+
         for (const collisionObject in collisionObjects) {
             const x = collisionObjects[collisionObject].x;
             const y = collisionObjects[collisionObject].y;
 
-            // Walk left
-            if (player.getX() > x - 64 && player.getX() < x + 64) {
-                if (player.getY() >= y - 64 && player.getY() < y + 64) {
-                    this.collisionOrientationObject.xm = false;
-                }
-            }
-
-            // Walk right
-            if (player.getX() + 64 >= x && player.getX() <= x) {
-                if (player.getY() >= y - 64 && player.getY() < y + 64) {
-                    this.collisionOrientationObject.xp = false;
-                }
-            }
-
-            // Walk top
-            if (player.getY() < y + (64 + this.collisionMargin) && player.getY() > y - (64 + this.collisionMargin)) {
-                if (player.getX() > x - (64 - this.collisionMargin) && player.getX() < x + (64 - this.collisionMargin)) {
-                    this.collisionOrientationObject.yp = false;
-                }
-            }
-
-            // Walk bottom
-            if (player.getY() + (64 + this.collisionMargin) > y && player.getY() < y + (64 + this.collisionMargin)) {
-                if (player.getX() > x - (64 - this.collisionMargin) && player.getX() < x + (64 - this.collisionMargin)) {
-                    this.collisionOrientationObject.ym = false;
-                }
-            }
+            this.collisionOrientationObject.xm = !this.canLeft(player, x, y);
+            this.collisionOrientationObject.xp = !this.canRight(player, x, y);
+            this.collisionOrientationObject.yp = !this.canTop(player, x, y);
+            this.collisionOrientationObject.ym = !this.canBottom(player, x, y);
         }
+    }
+
+    this.canLeft = function(player, x, y) {
+        return player.getX() > x - 64
+            && player.getX() < x + 64
+            && player.getY() >= y - 64
+            && player.getY() < y + 64;
+    }
+
+    this.canRight = function(player, x, y) {
+        return player.getX() + 64 >= x
+            && player.getX() <= x
+            && player.getY() >= y - 64
+            && player.getY() < y + 64;
+    }
+
+    this.canTop = function(player, x, y) {
+        return player.getY() < y + (64 + this.collisionMargin)
+            && player.getY() > y - (64 + this.collisionMargin)
+            && player.getX() > x - (64 - this.collisionMargin)
+            && player.getX() < x + (64 - this.collisionMargin);
+    }
+
+    this.canBottom = function(player, x, y) {
+        return player.getY() + (64 + this.collisionMargin) > y
+            && player.getY() < y + (64 + this.collisionMargin)
+            && player.getX() > x - (64 - this.collisionMargin)
+            && player.getX() < x + (64 - this.collisionMargin);
     }
 }
