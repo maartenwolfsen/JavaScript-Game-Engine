@@ -6,8 +6,8 @@ export function Player() {
     playerSpriteSheet.src = "/assets/sprite-sheets/player.png";
 
     let playerData = {
-        x: config.game.canvas.width / 2,
-        y: config.game.canvas.height - 100,
+        x: Math.round(config.game.canvas.width / 2),
+        y: Math.round(config.game.canvas.height - 100),
         speed: config.game.player.speed,
         width: config.game.player.width,
         height: config.game.player.height,

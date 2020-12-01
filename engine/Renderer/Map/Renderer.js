@@ -3,7 +3,6 @@ import {ObjectMapper} from "/engine/Renderer/Map/ObjectMapper.js";
 export function MapRenderer(mapData, mapName) {
     this.mapSpriteSheet = new Image();
     this.mapSpriteSheet.src = "/assets/sprite-sheets/maps/map_" + mapName + ".png";
-
     this.objectMapper = new ObjectMapper();
 
     this.render = function() {
@@ -60,6 +59,9 @@ export function MapRenderer(mapData, mapName) {
             canvasPos.x++;
         }
 
-        return mapData;
+        return {
+            mapData: mapData,
+            objectMapper: this.objectMapper
+        };
     }
 }

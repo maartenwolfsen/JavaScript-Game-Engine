@@ -11,8 +11,8 @@ setInterval(update, 1);
 
 function update() {
     canvas.clearCanvas();
-    renderMap("test");
+    const map = renderMap("test");
     playerMovement.registerKeys();
-    playerMovement.movePlayer(player);
+    playerMovement.movePlayer(player, map);
     player.drawPlayer();
 }

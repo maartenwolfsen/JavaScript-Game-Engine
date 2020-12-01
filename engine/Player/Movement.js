@@ -1,4 +1,7 @@
+import {Collision} from "/engine/Player/Collision.js";
+
 export function PlayerMovement() {
+    const collision = new Collision();
     let keys = {
         top: false,
         bottom: false,
@@ -28,28 +31,32 @@ export function PlayerMovement() {
         this.setKeys(keys);
     }
 
-    this.movePlayer = function(player) {
+    this.movePlayer = function(player, map) {
+        if (!keys.left && !keys.right && !keys.top && !keys.bottom) return;
+
         let playerX = player.getX();
         let playerY = player.getY();
         let playerAS = player.getAnimationState();
         let playerSpeed = player.getSpeed();
 
-        if (keys.left) {
+        collision.checkCollision(player, map);
+
+        if (keys.left && collision.collisionOrientationObject.xm) {
             playerX -= playerSpeed;
             playerAS = "walk_left";
         }
 
-        if (keys.right) {
+        if (keys.right && collision.collisionOrientationObject.xp) {
             playerX += playerSpeed;
             playerAS = "walk_right";
         }
 
-        if (keys.top) {
+        if (keys.top && collision.collisionOrientationObject.yp) {
             playerY -= playerSpeed;
             playerAS = "walk_top";
         }
 
-        if (keys.bottom) {
+        if (keys.bottom && collision.collisionOrientationObject.ym) {
             playerY += playerSpeed;
             playerAS = "walk_down";
         }

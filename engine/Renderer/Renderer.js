@@ -5,5 +5,5 @@ export function renderMap(mapName) {
     const mapParser = new MapParser();
     const mapRenderer = new MapRenderer(mapParser.parse("test"), mapName);
 
-    mapRenderer.render();
+    return mapRenderer.render();
 }
